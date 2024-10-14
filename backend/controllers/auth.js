@@ -1,6 +1,7 @@
 import { ONE_DAY } from "../constants/index.js";
 import {
   loginUser,
+  logoutUser,
   refreshUserSession,
   registerUser,
 } from "../services/auth.js";
@@ -38,7 +39,7 @@ export const loginUserController = async (req, res) => {
 
 export const logoutUserController = async (req, res) => {
   if (req.cookies.sessionId) {
-    await logoutUserController(req.cookies.sessionId);
+    await logoutUser(req.cookies.sessionId);
   }
 
   res.clearCookie("sessionId");
